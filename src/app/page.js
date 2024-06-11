@@ -12,6 +12,7 @@ export default function Home() {
       <hr />
       <section className={styles.signUpSection}>
         <h1>Sezione Sign Up</h1>
+        <p>test per vedere se funziona git con il mac</p>
       </section>
     </div>
   );
