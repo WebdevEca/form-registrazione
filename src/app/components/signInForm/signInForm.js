@@ -13,6 +13,7 @@ const SignInForm = () => {
         <InputForm type="password" placeholder="Inserisci la tua password" />
         <InputForm type="submit" value="Accedi" className />
       </form>
+      <img src="/standard.svg" alt="standard smile" />
     </div>
   );
 };
