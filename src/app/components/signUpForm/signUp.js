@@ -29,6 +29,7 @@ const SignUpForm = () => {
         <InputForm type="password" placeholder="Conferma la password" />
         <InputForm type="submit" value="Registrati" />
       </form>
+      <img src="/standard.svg" alt="standard smile" />
     </div>
   );
 };
