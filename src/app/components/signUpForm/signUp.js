@@ -1,7 +1,19 @@
 import InputForm from "../inputForm/inputForm";
 import styles from "./signUp.module.css";
+import { useState } from "react";
 
 const SignUpForm = () => {
+  defaultFormFields = {
+    nome: "",
+    cognome: "",
+    email: "",
+    password: "",
+    confermaPassword: "",
+  };
+
+  [formFields, setFormFields] = useState(defaultFormFields);
+  const { nome, cognome, email, password, confermaPassword } = formFields;
+
   return (
     <div className="flex flex-col items-center gap-4">
       <h3 className="text-2xl">Non hai un account?</h3>
