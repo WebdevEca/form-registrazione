@@ -5,11 +5,22 @@ import styles from "./signUp.module.css";
 import { useState } from "react";
 
 const SignUpForm = () => {
-  const [nome, setNome] = useState("");
-  const [cognome, setCognome] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confermaPassword, setConfermaPassword] = useState("");
+  const defaultInputVariables = {
+    nome: "",
+    cognome: "",
+    email: "",
+    password: "",
+    confermaPassword: "",
+  };
+
+  const [inputVariables, setInputVariables] = useState(defaultInputVariables);
+  const { nome, cognome, email, password, confermaPassword } = inputVariables;
+
+  // const [nome, setNome] = useState("");
+  // const [cognome, setCognome] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confermaPassword, setConfermaPassword] = useState("");
 
   const handleNome = (event) => {
     setNome(event.target.value);
@@ -36,7 +47,7 @@ const SignUpForm = () => {
     console.log("la conferma della password è: ", event.target.value);
   };
 
-  const array = [nome, cognome, email, password];
+  // const array = [nome, cognome, email, password];
 
   return (
     <div className="flex flex-col items-center gap-4">
