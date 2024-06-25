@@ -16,78 +16,59 @@ const SignUpForm = () => {
   const [inputVariables, setInputVariables] = useState(defaultInputVariables);
   const { nome, cognome, email, password, confermaPassword } = inputVariables;
 
-  // const [nome, setNome] = useState("");
-  // const [cognome, setCognome] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confermaPassword, setConfermaPassword] = useState("");
-
-  const handleNome = (event) => {
-    setNome(event.target.value);
-    console.log("il nome è: ", event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInputVariables({
+      ...inputVariables,
+      [name]: value,
+    });
   };
 
-  const handleCognome = (event) => {
-    setCognome(event.target.value);
-    console.log("il cognome è: ", event.target.value);
+  const testSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputVariables);
+    setInputVariables(defaultInputVariables);
   };
-
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-    console.log("l'email è: ", event.target.value);
-  };
-
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-    console.log("la password è: ", event.target.value);
-  };
-
-  const handleConfermaPassword = (event) => {
-    setConfermaPassword(event.target.value);
-    console.log("la conferma della password è: ", event.target.value);
-  };
-
-  // const array = [nome, cognome, email, password];
 
   return (
     <div className="flex flex-col items-center gap-4">
       <h3 className="text-2xl">Non hai un account?</h3>
       <p className="text-base">Crealo subito in pochi passi</p>
-      <form
-        className="flex flex-col gap-4"
-        onSubmit={() => {
-          console.log(array);
-        }}
-      >
+      <form className="flex flex-col gap-4" onSubmit={testSubmit}>
         <InputForm
           type="text"
+          name="nome"
           value={nome}
           placeholder="Nome"
-          onChange={handleNome}
+          onChange={handleChange}
         />
         <InputForm
           type="text"
+          name="cognome"
           value={cognome}
           placeholder="cognome"
-          onChange={handleCognome}
+          onChange={handleChange}
         />
         <InputForm
           type="email"
+          name="email"
           value={email}
           placeholder="email"
-          onChange={handleEmail}
+          onChange={handleChange}
         />
         <InputForm
           type="password"
+          name="password"
           value={password}
           placeholder="password"
-          onChange={handlePassword}
+          onChange={handleChange}
         />
         <InputForm
           type="password"
+          name="confermaPassword"
           value={confermaPassword}
           placeholder="conferma password"
-          onChange={handleConfermaPassword}
+          onChange={handleChange}
         />
         <InputForm type="submit" value="Registrati" />
       </form>
