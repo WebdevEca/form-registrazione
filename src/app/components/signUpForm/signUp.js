@@ -3,6 +3,8 @@
 import InputForm from "../inputForm/inputForm";
 import styles from "./signUp.module.css";
 import { useState } from "react";
+import { userAuth } from "@/app/firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpForm = () => {
   const defaultInputVariables = {
@@ -24,17 +26,22 @@ const SignUpForm = () => {
     });
   };
 
-  const testSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputVariables);
-    setInputVariables(defaultInputVariables);
+  const testAuth = async (event) => {
+    event.preventDefault();
+    try {
+      const { user } = await userAuth(email, password);
+      console.log(user);
+      setInputVariables(defaultInputVariables);
+    } catch (error) {
+      console.log("errore: ", error);
+    }
   };
 
   return (
     <div className="flex flex-col items-center gap-4">
       <h3 className="text-2xl">Non hai un account?</h3>
       <p className="text-base">Crealo subito in pochi passi</p>
-      <form className="flex flex-col gap-4" onSubmit={testSubmit}>
+      <form className="flex flex-col gap-4" onSubmit={testAuth}>
         <InputForm
           type="text"
           name="nome"

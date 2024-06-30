@@ -16,3 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 // ---------- FIREBASE AUTH SECTION ----------
 const auth = getAuth(app);
+
+export const userAuth = async (email, password) => {
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
