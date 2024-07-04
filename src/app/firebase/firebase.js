@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { doc, getFirestore } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -19,4 +20,15 @@ const auth = getAuth(app);
 
 export const userAuth = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+// ---------- FIREBASE FIRESTORE SECTION ----------
+
+const db = getFirestore(app);
+
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInfo = {}
+) => {
+  const userDocRef = doc(db, "users", userAuth.uid);
 };
