@@ -3,7 +3,7 @@
 import InputForm from "../inputForm/inputForm";
 import styles from "./signUp.module.css";
 import { useState } from "react";
-import { userAuth } from "@/app/firebase/firebase";
+import { userAuth, createUserDocumentFromAuth } from "@/app/firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpForm = () => {
@@ -31,6 +31,7 @@ const SignUpForm = () => {
     try {
       const { user } = await userAuth(email, password);
       console.log(user);
+      createUserDocumentFromAuth(user, nome, cognome, email, password);
       setInputVariables(defaultInputVariables);
     } catch (error) {
       console.log("errore: ", error);
